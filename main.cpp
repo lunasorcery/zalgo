@@ -8,7 +8,7 @@ bool g_fuckUpGoingUp = false;
 bool g_fuckUpTheMiddle = false;
 bool g_fuckUpGoingDown = false;
 
-int g_strength = 0;
+int g_strength = 1;
 
 const std::vector<uint32_t> zalgo_up = {
 	0x030d, 0x030e, 0x0304, 0x0305,
