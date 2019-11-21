@@ -3,6 +3,7 @@
 #include <getopt.h>
 #include <vector>
 
+bool g_hasSetFlags = false;
 bool g_fuckUpGoingUp = false;
 bool g_fuckUpTheMiddle = false;
 bool g_fuckUpGoingDown = false;
@@ -78,14 +79,24 @@ void parseCommandLine(int argc, char** argv)
 			break;
 
 		switch (c) {
-			case 'u': { g_fuckUpGoingUp   = true; break; }
-			case 'm': { g_fuckUpTheMiddle = true; break; }
-			case 'd': { g_fuckUpGoingDown = true; break; }
+			case 'u': { g_fuckUpGoingUp   = true; g_hasSetFlags = true; break; }
+			case 'm': { g_fuckUpTheMiddle = true; g_hasSetFlags = true; break; }
+			case 'd': { g_fuckUpGoingDown = true; g_hasSetFlags = true; break; }
 			case 's': {
 				g_strength = std::max(std::min(atoi(optarg), 3), 1);
+				g_hasSetFlags = true;
 				break;
 			}
 		}
+	}
+
+	// default options
+	if (!g_hasSetFlags)
+	{
+		g_fuckUpGoingUp = false;
+		g_fuckUpTheMiddle = true;
+		g_fuckUpGoingDown = true;
+		g_strength = 1;
 	}
 }
 
