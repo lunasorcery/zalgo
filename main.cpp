@@ -105,9 +105,21 @@ int main(int argc, char** argv)
 	parseCommandLine(argc, argv);
 
 	int c;
+	bool isInEscapeCode = false;
 	while ((c = getchar()) > 0)
 	{
 		putc((char)c, stdout);
+
+		if (c == 0x1B && !isInEscapeCode)
+		{
+			isInEscapeCode = true;
+			continue;
+		}
+		else if (isInEscapeCode && c >= 0x40 && c <= 0x7e)
+		{
+			isInEscapeCode = false;
+			continue;
+		}
 
 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		{
