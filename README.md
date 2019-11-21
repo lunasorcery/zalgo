@@ -1,6 +1,6 @@
 # zalgo
 
-**zalgo** is a small utility that reads stding and corrupts it with combining diacritics.
+**zalgo** is a small utility that reads stdin and corrupts it with combining diacritics.
 
 ### Options:
 
