@@ -8,7 +8,7 @@ bool g_fuckUpGoingUp = false;
 bool g_fuckUpTheMiddle = false;
 bool g_fuckUpGoingDown = false;
 
-int g_strength = 1;
+int g_strength = 0;
 
 const std::vector<uint32_t> zalgo_up = {
 	0x030d, 0x030e, 0x0304, 0x0305,
@@ -84,7 +84,7 @@ void parseCommandLine(int argc, char** argv)
 			case 'm': { g_fuckUpTheMiddle = true; g_hasSetDirection = true; break; }
 			case 'd': { g_fuckUpGoingDown = true; g_hasSetDirection = true; break; }
 			case 's': {
-				g_strength = std::max(std::min(atoi(optarg), 3), 1);
+				g_strength = std::max(std::min(atoi(optarg), 3), 0);
 				break;
 			}
 		}
@@ -126,7 +126,13 @@ int main(int argc, char** argv)
 			int num_mid = 0;
 			int num_down = 0;
 
-			if (g_strength == 1)
+			if (g_strength == 0)
+			{
+				num_up = (rand() % 3) == 0 ? 1 : 0;
+				num_mid = (rand() % 3) == 0 ? 1 : 0;
+				num_down = (rand() % 3) == 0 ? 1 : 0;
+			}
+			else if (g_strength == 1)
 			{
 				num_up = (rand() % 8);
 				num_mid = (rand() % 2);
