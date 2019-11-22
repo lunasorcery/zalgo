@@ -8,7 +8,7 @@ bool g_fuckUpGoingUp = false;
 bool g_fuckUpTheMiddle = false;
 bool g_fuckUpGoingDown = false;
 
-int g_strength = 0;
+int g_strength = 1;
 
 const std::vector<uint32_t> zalgo_up = {
 	0x030d, 0x030e, 0x0304, 0x0305,
@@ -134,15 +134,15 @@ int main(int argc, char** argv)
 			}
 			else if (g_strength == 1)
 			{
-				num_up = (rand() % 8);
+				num_up = (rand() % 4);
 				num_mid = (rand() % 2);
-				num_down = (rand() % 8);
+				num_down = (rand() % 4);
 			}
 			else if (g_strength == 2)
 			{
-				num_up = (rand() % 8) + 1;
+				num_up = (rand() % 6) + 1;
 				num_mid = (rand() % 3);
-				num_down = (rand() % 8) + 1;
+				num_down = (rand() % 6) + 1;
 			}
 			else if (g_strength == 3)
 			{
