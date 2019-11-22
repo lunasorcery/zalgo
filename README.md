@@ -15,7 +15,7 @@
                3: maxi fuck up
 ```
 
-By default, it will act as if you'd specified `-md -s0`.
+By default, it will act as if you'd specified `-md -s1`.
 
 
 ### Example usage:
