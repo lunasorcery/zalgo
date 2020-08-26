@@ -5,6 +5,7 @@
 ### Options:
 
 ```
+-h,--help      Display this help message
 -u,--up        Fuck up going up
 -m,--middle    Fuck up the middle
 -d,--down      Fuck up going down

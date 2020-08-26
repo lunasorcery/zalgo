@@ -63,6 +63,21 @@ void printRandZalgo(const std::vector<uint32_t>& arr)
 	fputs(buffer, stdout);
 }
 
+void printHelp()
+{
+	printf("zalgo\n\n");
+	printf("Options:\n");
+	printf("    -h,--help      Display this help message\n");
+	printf("    -u,--up        Fuck up going up\n");
+	printf("    -m,--middle    Fuck up the middle\n");
+	printf("    -d,--down      Fuck up going down\n");
+	printf("    -s,--strength  Choose how strong to fuck up, from 0-3:\n");
+	printf("                   0: micro fuck up\n");
+	printf("                   1: mini fuck up\n");
+	printf("                   2: normal fuck up\n");
+	printf("                   3: maxi fuck up\n");
+}
+
 void parseCommandLine(int argc, char** argv)
 {
 	while (1) {
@@ -71,11 +86,12 @@ void parseCommandLine(int argc, char** argv)
 			{ "middle",   no_argument,       0, 'm' },
 			{ "down",     no_argument,       0, 'd' },
 			{ "strength", required_argument, 0, 's' },
+			{ "help",     no_argument,       0, 'h' },
 			{ 0, 0, 0, 0 }
 		};
 
 		int option_index = 0;
-		const int c = getopt_long(argc, argv, "umds:", long_options, &option_index);
+		const int c = getopt_long(argc, argv, "umds:h", long_options, &option_index);
 
 		if (c == -1)
 			break;
@@ -87,6 +103,10 @@ void parseCommandLine(int argc, char** argv)
 			case 's': {
 				g_strength = std::max(std::min(atoi(optarg), 3), 0);
 				break;
+			}
+			case 'h': {
+				printHelp();
+				exit(0);
 			}
 		}
 	}
